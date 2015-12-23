@@ -29,9 +29,14 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.save
+    
+    # trigger a reply here, zy
+    answer_it
+    
     redirect_to @post
   end
 
+  
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
@@ -65,5 +70,22 @@ class PostsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
       params.require(:post).permit(:user_id, :body)
+    end
+    
+    def answer_it
+      puts "try to answer it. #{post_params}"
+      ask_name = ["你叫什么"]
+      ask_name.each do |regex|
+        if regex.match(post_params[:body]) {
+          answer = Post.new();
+          answer.body = "我叫xxx";
+          answer.user_id = 1;
+          answer.save
+          return
+        }
+      end
+      
+      puts "####Found no answer for #{post_params[:body]}"
+    end
     end
 end

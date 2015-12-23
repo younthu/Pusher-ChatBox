@@ -1,6 +1,7 @@
-source 'https://rubygems.org'
+#source 'https://rubygems.org'
+source 'http://mirrors.aliyun.com/rubygems/'
 
-
+ruby "2.1.5"
 gem 'rails', '4.2.1'
 
 gem 'devise'
@@ -17,6 +18,11 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
+
+#NLP
+gem 'treat'
+gem 'rmmseg-cpp'
+gem 'freeling-analyzer'
 
 
 group :development, :test do
