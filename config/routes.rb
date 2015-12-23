@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'sentence/index'
+
   resources :posts
   resources :conversations
   resources :messages
