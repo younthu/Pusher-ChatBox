@@ -75,14 +75,14 @@ class PostsController < ApplicationController
     def answer_it
       puts "try to answer it. #{post_params}"
       ask_name = [/你(名字|的名字)?叫什么\??/]
+      
       ask_name.each do |regex|
-        if regex.match(post_params[:body]) {
+        if regex =~ post_params[:body] 
           answer = Post.new();
           answer.body = "我叫xxx";
           answer.user_id = 1;
           answer.save
           return
-        }
       end
       
       puts "####Found no answer for #{post_params[:body]}"
